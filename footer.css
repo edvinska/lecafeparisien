@@ -5,6 +5,7 @@
 .site-footer .footer-brand{grid-column:auto;min-width:0}
 .site-footer .footer-brand img{display:block;width:180px;max-width:100%;height:auto;margin:0}
 .site-footer .footer-col{min-width:0}
+.site-footer .footer-address{margin:0 0 10px;color:#d0ccbf;font-size:15px;font-style:normal;line-height:1.55}
 .site-footer .footer-title{display:block;margin-bottom:13px;color:#d5c28d;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .site-footer .footer-col a{display:block;width:fit-content;max-width:100%;margin:8px 0;color:#d0ccbf;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
 .site-footer .footer-col a:hover{color:#d5c28d}
