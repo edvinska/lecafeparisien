@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <link rel="icon" href="images/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12251b">
+  <title data-i18n="homeTitle">Le Paris Helsinki | A little taste of Paris</title>
+  <meta name="description" content="A little Parisian moment in Helsinki. Visit Le Paris for French pastries, a good cup of coffee and a slower start to the day." data-i18n-content="homeDescription">
+  <link rel="canonical" href="https://lecafeparisien.fi/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      color-scheme:light;
+      --pine:#12251b;
+      --pine-2:#1a3325;
+      --pine-3:#284331;
+      --ivory:#f4eddf;
+      --paper:#eee5d6;
+      --paper-deep:#e2d5c0;
+      --gold:#b39a5d;
+      --gold-light:#d5c28d;
+      --ink:#17291e;
+      --muted:#6e7165;
+      --line:rgba(211,194,141,.27);
+      --serif:"Cormorant Garamond",Georgia,serif;
+      --sans:"DM Sans",Arial,sans-serif;
+      --script:"Italianno","Brush Script MT",cursive;
+      --page-pad:max(clamp(22px,5.5vw,88px),calc(50vw - 720px));
+      --header-height:112px;
+      --body-size:clamp(16px,1.1vw,18px);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:auto;background:var(--pine);scroll-padding-top:calc(var(--header-height) + 18px)}
+    body{margin:0;min-width:320px;overflow-x:clip;background:var(--pine);color:var(--ivory);font-family:var(--sans);font-size:var(--body-size);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold-light);outline-offset:4px}
+    ::selection{background:var(--gold);color:var(--pine)}
+    [id]{scroll-margin-top:calc(var(--header-height) + 18px)}
+    .site-header{position:sticky;top:0;z-index:50;height:var(--header-height);background:rgba(18,37,27,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transition:background .35s,border-color .35s}
+    .site-header.scrolled{background:rgba(11,22,15,.84);border-color:rgba(213,194,141,.16)}
+    .topline{height:27px;display:flex;align-items:center;justify-content:center;padding:0 16px;color:var(--gold-light);font-size:11px;font-weight:500;letter-spacing:.18em;text-align:center;text-transform:uppercase}
+    .nav-row{height:calc(var(--header-height) - 30px);display:flex;justify-content:center;align-items:center;gap:clamp(22px,3vw,42px);padding:0 var(--page-pad)}
+    .brand{display:inline-flex;align-items:center;width:max-content;max-width:100%;flex:0 0 auto}
+    .brand img{width:clamp(112px,11vw,150px);height:auto;max-height:63px;object-fit:contain}
+    .main-nav{display:flex;align-items:center;justify-content:center;gap:clamp(20px,3.2vw,46px);flex:0 0 auto}
+    .main-nav a,.header-cta,.mobile-toggle{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+    .main-nav a{position:relative;padding:9px 0;color:rgba(244,237,223,.8);transition:color .25s}.main-nav a::after{position:absolute;right:0;bottom:3px;left:0;height:1px;background:var(--gold-light);content:"";transform:scaleX(0);transform-origin:left center;transition:transform .28s ease}.main-nav a:hover::after,.main-nav a:focus-visible::after{transform:scaleX(1)}
+    .main-nav a:hover{color:var(--gold-light)}
+    .header-action{flex:0 0 auto}
+    .header-action{display:flex;align-items:center;gap:14px}
+    .language-select{min-height:40px;padding:0 30px 0 12px;border:1px solid rgba(244,237,223,.35);border-radius:0;background-color:transparent;color:var(--ivory);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;cursor:pointer}
+    .language-select option{background:var(--pine);color:var(--ivory)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .header-cta{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 22px;border:1px solid rgba(244,237,223,.55);color:var(--ivory);transition:background .25s,color .25s,border-color .25s}
+    .header-cta:hover{background:var(--ivory);border-color:var(--ivory);color:var(--pine)}
+    .mobile-toggle{display:none;border:1px solid var(--line);background:transparent;color:var(--ivory);padding:12px 16px;cursor:pointer}
+    .mobile-toggle span{display:block;width:20px;height:1px;margin:4px 0;background:currentColor}
+    .mobile-menu{display:none}
+    .eyebrow{margin:0;color:var(--gold-light);font-size:12px;font-weight:600;letter-spacing:.2em;line-height:1.4;text-transform:uppercase}
+    .serif{font-family:var(--serif);font-weight:400}
+    .button{display:inline-flex;min-height:54px;align-items:center;justify-content:center;padding:0 27px;border:1px solid var(--gold);background:var(--gold);color:var(--pine);font-size:12px;font-weight:600;letter-spacing:.15em;text-align:center;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s}
+    .button:hover{background:transparent;color:var(--gold-light);border-color:var(--gold-light)}
+    .button-quiet{background:transparent;color:var(--ivory);border-color:rgba(244,237,223,.55)}
+    .button-quiet:hover{background:var(--ivory);color:var(--pine);border-color:var(--ivory)}
+    .text-link{display:inline-flex;align-items:center;min-height:42px;border-bottom:1px solid rgba(244,237,223,.55);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:color .2s,border-color .2s}
+    .text-link:hover{color:var(--gold-light);border-color:var(--gold-light)}
+    .hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,.95fr) minmax(360px,1.05fr);align-items:center;gap:clamp(46px,8vw,130px);min-height:clamp(670px,calc(100svh - var(--header-height)),850px);padding:clamp(54px,7vw,108px) var(--page-pad);overflow:hidden;background:radial-gradient(ellipse at 12% 65%,rgba(66,92,61,.27),transparent 46%),linear-gradient(135deg,#12251b 0%,#172d20 58%,#102017 100%)}
+    .hero::before{position:absolute;inset:0;z-index:-1;pointer-events:none;content:"";opacity:.19;background-image:radial-gradient(rgba(244,237,223,.3) .45px,transparent .7px);background-size:5px 5px;mask-image:linear-gradient(90deg,#000,transparent 72%)}
+    .hero-copy{position:relative;z-index:2;max-width:660px;padding:10px 0 20px}
+    .hero h1{max-width:8ch;margin:22px 0 24px;font-family:var(--serif);font-size:clamp(66px,8.1vw,128px);font-weight:400;letter-spacing:-.055em;line-height:.82}
+    .hero h1 span{display:block}
+    .hero h1 em{color:var(--gold-light);font-weight:400}
+    .hero-lead{max-width:390px;margin:0;color:rgba(244,237,223,.8);font-family:var(--serif);font-size:clamp(20px,2vw,27px);line-height:1.35}
+    .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:35px}
+    .hero-location{margin:30px 0 0;color:rgba(244,237,223,.6);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+    .hero-visual{position:relative;width:100%;max-width:650px;justify-self:end;padding:13px;border:1px solid rgba(213,194,141,.42);background:rgba(244,237,223,.035)}
+    .hero-photo-window{position:relative;aspect-ratio:1365/2048;overflow:hidden;background:#d7c5a7}
+    .hero-photo-window::after{position:absolute;inset:0;pointer-events:none;content:"";border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 0 70px rgba(18,37,27,.14)}
+    .hero-photo{width:100%;height:100%;object-fit:contain;object-position:center;filter:saturate(.96) sepia(.055) contrast(1.035);transform:translate3d(0,0,0);will-change:transform}
+    .hero-stamp{position:absolute;left:-28px;bottom:34px;z-index:2;padding:12px 20px;background:var(--gold);color:var(--pine);font-family:var(--serif);font-size:23px;font-style:italic;line-height:1}
+    .hero-index{position:absolute;right:28px;top:24px;color:var(--ivory);font-size:11px;letter-spacing:.18em;text-transform:uppercase;writing-mode:vertical-rl}
+    .marquee{height:59px;overflow:hidden;background:var(--gold);color:var(--pine);display:flex;align-items:center}
+    .marquee-track{display:flex;width:max-content;transform:translate3d(0,0,0);will-change:transform}
+    .marquee-line{display:flex;align-items:center;gap:clamp(32px,5vw,72px);padding-right:clamp(32px,5vw,72px);white-space:nowrap;font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-style:italic}
+    .marquee-line span::after{content:"✦";display:inline-block;margin-left:clamp(32px,5vw,72px);font-size:12px;font-style:normal}
+    .scroll-story{position:relative;padding:clamp(90px,12vw,160px) var(--page-pad);background:var(--pine);color:var(--ivory)}
+    .story-layout{display:grid;grid-template-columns:minmax(0,.78fr) minmax(360px,1.22fr);align-items:center;gap:clamp(42px,6vw,92px);max-width:1440px;margin:0 auto}
+    .story-copy{max-width:590px}
+    .story-copy h2{margin:18px 0 34px;font-family:var(--serif);font-size:clamp(56px,7vw,98px);font-weight:400;letter-spacing:-.05em;line-height:.88}
+    .story-copy h2 em{color:var(--gold-light);font-weight:400}
+    .story-lead{margin:0 0 28px;color:var(--ivory);font-family:var(--serif);font-size:clamp(24px,2.5vw,32px);line-height:1.35}
+    .story-body{max-width:540px;margin:0 0 22px;color:rgba(244,237,223,.75);font-size:var(--body-size);line-height:1.85}
+    .story-signature{display:block;margin-top:30px;color:var(--gold-light);font-family:var(--script);font-size:44px;line-height:1}
+    .story-visual{position:relative;width:100%;max-width:760px;justify-self:end;margin:0;padding:14px;border:1px solid rgba(213,194,141,.3);background:rgba(244,237,223,.025)}
+    .story-visual::before{position:absolute;inset:28px -18px -18px 28px;z-index:-1;content:"";border:1px solid rgba(213,194,141,.15)}
+    .story-photo-window{position:relative;aspect-ratio:1.5;overflow:hidden;background:#d7c5a7}.story-photo-window::after{position:absolute;inset:0;pointer-events:none;content:"";background:linear-gradient(135deg,rgba(213,194,141,.04),transparent 48%,rgba(18,37,27,.08))}
+    .story-photo{width:100%;height:100%;object-fit:cover;object-position:center 50%;filter:brightness(1.04) contrast(1.05) saturate(1.06);transform:scale(1.01)}
+    .story-caption{display:flex;justify-content:space-between;gap:18px;margin:16px 3px 2px;color:var(--gold-light);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+    .welcome{display:grid;grid-template-columns:minmax(0,.9fr) minmax(330px,1.1fr);align-items:center;gap:clamp(40px,6vw,88px);padding:clamp(100px,13vw,190px) var(--page-pad);background:var(--paper);color:var(--ink)}
+    .section-heading{margin:16px 0 24px;font-family:var(--serif);font-size:clamp(47px,6.1vw,88px);font-weight:400;letter-spacing:-.045em;line-height:.92}
+    .section-heading em{color:#86733e;font-weight:400}
+    .section-copy{max-width:520px;margin:0;color:#4f574b;font-size:var(--body-size);line-height:1.85}
+    .welcome .eyebrow,.ritual .eyebrow{color:#8b7845}
+    .welcome-image{position:relative;width:100%;max-width:680px;justify-self:end;margin:0;overflow:hidden}
+    .welcome-image img{display:block;width:100%;height:auto;object-fit:contain;object-position:center;box-shadow:none}
+    .photo-note{display:flex;justify-content:space-between;gap:20px;margin:18px 0 0;color:#676d60;font-size:13px;letter-spacing:.08em}
+    .ritual{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);max-width:1440px;min-height:760px;margin-inline:auto;background:var(--pine-2)}
+    .ritual-photo{min-height:760px;margin:0;overflow:hidden}
+    .ritual-photo img{width:100%;height:100%;min-height:760px;object-fit:cover;object-position:center 58%}
+    .ritual-copy{align-self:center;max-width:650px;padding:clamp(55px,8vw,120px)}
+    .ritual h2{margin:18px 0 22px;font-family:var(--serif);font-size:clamp(48px,6vw,82px);font-weight:400;letter-spacing:-.04em;line-height:.94}
+    .ritual h2 em{color:var(--gold-light);font-weight:400}
+    .ritual p{max-width:430px;margin:0;color:rgba(244,237,223,.76);font-size:var(--body-size);line-height:1.85}
+    .ritual-signature{display:block;margin-top:22px;color:var(--gold-light);font-family:var(--script);font-size:42px;line-height:1}
+    .pastries{padding:clamp(100px,13vw,185px) 0 clamp(105px,13vw,180px);background:var(--paper);color:var(--ink)}
+    .pastry-heading{display:flex;max-width:1440px;justify-content:space-between;align-items:end;gap:40px;margin-inline:auto;padding:0 clamp(22px,5.5vw,88px)}
+    .pastry-heading .section-heading{max-width:8ch;margin-bottom:0}
+    .pastry-intro{max-width:390px;margin:0 0 7px;color:#5e6559;font-size:var(--body-size);line-height:1.8}
+    .pastry-gallery-viewport{max-width:1440px;margin-inline:auto;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+    .pastry-gallery{display:grid;width:max-content;grid-auto-columns:minmax(260px,min(28vw,420px));grid-auto-flow:column;gap:clamp(18px,2.5vw,36px);padding:56px clamp(22px,5.5vw,88px) 32px}
+    .pastry-card{min-width:0;scroll-snap-align:start}
+    .pastry-card figure{position:relative;aspect-ratio:1/1.08;overflow:hidden;margin:0;background:#ddd0ba}
+    .pastry-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 52%;transition:transform .8s cubic-bezier(.2,.75,.25,1)}
+    .pastry-card:hover img{transform:scale(1.045)}
+    @media(min-width:768px){.pastries.has-scroll-gallery{padding-bottom:calc(clamp(105px,13vw,180px) + var(--gallery-scroll-distance,0px))}.pastries.has-scroll-gallery .pastry-gallery-viewport{position:sticky;top:calc(var(--header-height) + 24px);overflow:hidden;scroll-snap-type:none;scrollbar-width:none}}
+    .pastry-card figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:17px 2px 0;border-top:1px solid rgba(23,41,30,.25);margin-top:15px}
+    .pastry-name{font-family:var(--serif);font-size:clamp(24px,2.5vw,34px);line-height:1.05}
+    .pastry-type{color:#707266;font-size:12px;letter-spacing:.12em;text-align:right;text-transform:uppercase}
+    .gallery-hint{max-width:1440px;margin:10px auto 0;padding-inline:clamp(22px,5.5vw,88px);color:#707266;font-size:14px}
+    .gallery-menu-link{max-width:1440px;margin:24px auto 0;padding-inline:clamp(22px,5.5vw,88px)}
+    .page-progress{position:fixed;inset:0 0 auto;z-index:100;height:2px;pointer-events:none}
+    .page-progress span{display:block;width:100%;height:100%;background:var(--gold-light);transform:scaleX(0);transform-origin:left center}
+    .visit{display:grid;grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr);gap:clamp(42px,8vw,120px);align-items:center;padding:clamp(100px,13vw,180px) var(--page-pad);background:var(--pine);color:var(--ivory)}
+    .visit h2{margin:17px 0 22px;font-family:var(--serif);font-size:clamp(48px,6vw,84px);font-weight:400;letter-spacing:-.04em;line-height:.94}
+    .visit h2 em{color:var(--gold-light);font-weight:400}
+    .visit-copy p{max-width:450px;margin:0;color:rgba(244,237,223,.75);font-size:var(--body-size);line-height:1.8}
+    .visit-address{margin:28px 0 25px;padding-left:18px;border-left:1px solid var(--gold);font-family:var(--serif);font-size:clamp(23px,2.5vw,31px);font-style:normal;line-height:1.25}
+    .visit-address small{display:block;margin-top:8px;color:rgba(244,237,223,.62);font-family:var(--sans);font-size:14px;letter-spacing:.08em;line-height:1.6}
+    .visit-links{display:flex;flex-wrap:wrap;align-items:center;gap:22px}
+    .map-panel{position:relative;min-width:0;border:1px solid rgba(213,194,141,.32);padding:12px;background:#e7e0d1}
+    .map-panel iframe{display:block;width:100%;height:clamp(380px,42vw,560px);border:0;background:#e7e0d1;filter:saturate(.72) sepia(.08)}
+    .map-caption{display:flex;justify-content:space-between;gap:20px;padding:14px 8px 3px;color:#475744;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .form-status{min-height:1.5em;color:#425c43}
+    .moments{padding:clamp(90px,11vw,150px) var(--page-pad) clamp(100px,12vw,165px);background:var(--pine-2);color:var(--ivory)}
+    .moments-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:40px}
+    .moments-head h2{margin:16px 0 0;font-family:var(--serif);font-size:clamp(48px,6vw,84px);font-weight:400;letter-spacing:-.04em;line-height:.92}
+    .moments-head h2 em{color:var(--gold-light);font-weight:400}
+    .moments-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
+    .moment-card{position:relative;display:block;overflow:hidden;background:#24372a}
+    .moment-card img{width:100%;aspect-ratio:.9;object-fit:cover;object-position:center 85%;transition:transform .8s cubic-bezier(.2,.75,.25,1)}
+    .moment-card:hover img{transform:scale(1.04)}
+    .moment-card span{position:absolute;left:14px;bottom:14px;padding:8px 11px;background:rgba(18,37,27,.84);color:var(--ivory);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase}
+    .site-footer{padding:54px var(--page-pad) 30px;background:#0e1d15;color:var(--ivory)}
+    .footer-top{display:grid;box-sizing:border-box;width:100%;max-width:1440px;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;align-items:start;margin-inline:auto;padding:0 clamp(22px,5.5vw,88px) 42px;border-bottom:1px solid var(--line)}
+    .footer-brand img{display:block;width:132px;height:auto}
+    .footer-brand p,.footer-col p{max-width:310px;margin:0;color:rgba(244,237,223,.65);font-size:15px;line-height:1.75}
+    .footer-title{display:block;margin-bottom:13px;color:var(--gold-light);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+    .opening-hours{display:grid;grid-template-columns:auto auto;justify-content:start;gap:5px 18px;margin:0;color:rgba(244,237,223,.72);font-size:15px;line-height:1.75}
+    .opening-hours dt,.opening-hours dd{margin:0}
+    .form-field-note{color:#747668;font-size:12px;font-weight:400;letter-spacing:0}
+    .footer-col a{display:block;width:max-content;max-width:100%;margin:8px 0;color:rgba(244,237,223,.78);font-size:15px;line-height:1.55}
+    .footer-col a:hover{color:var(--gold-light)}
+    .footer-bottom{display:flex;box-sizing:border-box;width:100%;max-width:1440px;justify-content:space-between;gap:20px;margin-inline:auto;padding:22px clamp(22px,5.5vw,88px) 0;color:rgba(244,237,223,.48);font-size:12px;letter-spacing:.06em}
+    .reveal{opacity:1;transform:none}
+    .story-copy [data-story-reveal]{opacity:1;transform:none}
+    .hero-photo,.ritual-photo img{will-change:transform}
+    @media(max-width:900px){
+      :root{--page-pad:clamp(22px,5vw,48px)}
+      .nav-row{gap:18px}
+      .footer-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .main-nav{gap:19px}
+      .main-nav a,.header-cta{font-size:11px}
+      .hero{grid-template-columns:minmax(0,.95fr) minmax(280px,1.05fr);gap:36px}
+      .hero h1{font-size:clamp(60px,8vw,92px)}
+      .story-layout{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:32px}
+      .story-copy h2{font-size:clamp(54px,7.5vw,82px)}
+      .pastry-gallery{grid-auto-columns:minmax(250px,min(36vw,420px))}
+      .visit{gap:40px}
+    }
+    @media(max-width:680px){
+      :root{--header-height:92px;--page-pad:22px;--body-size:17px}
+      .topline{height:23px;font-size:10px;letter-spacing:.04em}
+      .menu-open{overflow:hidden}
+      .nav-row{height:69px;justify-content:space-between;gap:14px;padding:0 20px}
+      .brand img{width:124px;max-height:52px}
+      .main-nav,.header-action{display:none}
+      .mobile-toggle{display:block;justify-self:end;padding:9px 13px;font-size:11px}
+      .mobile-menu{position:fixed;inset:var(--header-height) 0 0;z-index:45;display:flex;flex-direction:column;gap:0;padding:22px var(--page-pad) 40px;background:rgba(18,37,27,.98);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility .25s}
+      .mobile-menu.is-open{opacity:1;visibility:visible;transform:none}
+      .mobile-menu a{padding:19px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:34px;line-height:1.1}
+      .mobile-menu .mobile-book{margin-top:26px;border:1px solid var(--gold);padding:16px;color:var(--gold-light);font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.15em;text-align:center;text-transform:uppercase}
+      .mobile-language{display:flex;align-items:center;justify-content:space-between;margin-top:24px;color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+      .mobile-language .language-select{min-width:84px}
+      .hero{grid-template-columns:1fr;gap:36px;min-height:0;padding:58px var(--page-pad) 62px}
+      .hero-copy{padding:0}
+      .hero h1{font-size:clamp(61px,15vw,88px);max-width:7ch;margin:19px 0 20px}
+      .hero-lead{max-width:330px;font-size:21px}
+      .hero-actions{gap:18px;margin-top:27px}
+      .hero-location{margin-top:23px;font-size:11px}
+      .hero-visual{width:min(100%,520px);justify-self:center;margin:3px 0 0 10px;padding:9px}
+      .hero-photo-window{aspect-ratio:1365/2048}
+      .hero-stamp{left:-12px;bottom:20px;padding:10px 15px;font-size:20px}
+      .hero-index{right:16px;top:16px;font-size:9px}
+      .marquee{height:52px}
+      .scroll-story{padding:84px var(--page-pad) 95px}
+      .story-layout{grid-template-columns:1fr;gap:54px}
+      .story-copy{max-width:680px}
+      .story-copy h2{font-size:clamp(50px,11.5vw,74px);margin:14px 0 26px}
+      .story-lead{font-size:25px}
+      .story-visual{position:relative;top:auto;width:min(100%,540px);justify-self:center;padding:9px}
+      .story-photo-window{aspect-ratio:1.5}
+      .story-caption{flex-direction:column;gap:4px;margin:10px 2px 0;font-size:10px;letter-spacing:.08em}
+      .welcome{grid-template-columns:1fr;gap:52px;padding:88px var(--page-pad)}
+      .section-heading{font-size:clamp(45px,11.5vw,68px);margin:13px 0 18px}
+      .welcome-image{width:min(100%,560px);justify-self:center}
+      .welcome-image img{width:100%;height:auto;object-fit:contain;box-shadow:none}
+      .photo-note{font-size:12px}
+      .ritual{grid-template-columns:1fr}
+      .ritual-photo{min-height:0;height:clamp(390px,105vw,520px);max-height:520px}
+      .ritual-photo img{min-height:0;max-height:none}
+      .ritual-copy{padding:70px var(--page-pad) 76px}
+      .ritual h2{font-size:clamp(45px,10.5vw,66px)}
+      .pastries{padding:88px 0 94px}
+      .pastry-heading{display:block}
+      .pastry-heading .section-heading{max-width:8ch}
+      .pastry-intro{margin-top:30px}
+      .pastry-gallery{grid-auto-columns:minmax(250px,78vw);gap:16px;padding:35px var(--page-pad) 24px}
+      .gallery-hint{font-size:13px}
+      .visit{grid-template-columns:1fr;gap:50px;padding:88px var(--page-pad)}
+      .visit h2{font-size:clamp(45px,10.5vw,66px)}
+      .map-panel iframe{height:380px}
+      .moments{padding:82px var(--page-pad) 92px}
+      .moments-head{display:block;margin-bottom:40px}
+      .moments-head .button{margin-top:20px}
+      .moments-grid{grid-template-columns:1fr 1fr;gap:12px}
+      .moment-card img{aspect-ratio:.82}
+      .moment-card:last-child{grid-column:1/-1}
+      .footer-top{grid-template-columns:1fr 1fr;gap:28px 20px}
+      .footer-brand{grid-column:1/-1}
+      .footer-bottom{flex-direction:column;gap:7px;font-size:11px}
+    }
+    @media(max-width:380px){
+      .hero h1{font-size:57px}
+      .hero-actions{align-items:flex-start;flex-direction:column;gap:10px}
+      .story-copy h2{font-size:46px}
+      .story-caption{font-size:10px}
+      .map-panel iframe{height:320px}
+      .moments-grid{grid-template-columns:1fr}
+      .moment-card:last-child{grid-column:auto}
+      .footer-top{grid-template-columns:1fr}
+      .footer-brand{grid-column:auto}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+      .pastry-card img,.moment-card img{transition:none}
+    }
+    .nav-row{display:grid;grid-template-columns:minmax(130px,1fr) auto minmax(190px,1fr);justify-content:initial;gap:clamp(18px,3vw,42px)}
+    .brand{justify-self:start}
+    .main-nav{justify-self:center}
+    .header-action{justify-self:end;gap:18px}
+    .header-contact{display:grid;gap:3px;color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:.055em;line-height:1.35;text-align:right;white-space:nowrap}
+    .header-contact a{color:var(--ivory);font-size:12px;font-weight:500;letter-spacing:.035em;text-decoration:underline;text-decoration-color:rgba(244,237,223,.45);text-underline-offset:3px}
+    .header-contact a:hover{color:var(--gold-light)}
+    .topline{min-height:30px;height:auto;padding:5px 14px;color:var(--gold-light);font-size:12px;font-weight:500;line-height:1.3;letter-spacing:.14em;background:rgba(9,20,14,.38)}.topline-desktop{display:inline}.topline-mobile{display:none}
+    .topline-phone{display:none}
+    .hero-location{color:rgba(244,237,223,.92);font-size:13px}
+    @media(max-width:1020px) and (min-width:681px){
+      .nav-row{grid-template-columns:minmax(100px,1fr) auto minmax(100px,1fr);gap:14px;padding-inline:24px}
+      .brand img{width:112px}
+      .main-nav{gap:16px}
+      .main-nav a{font-size:10px;letter-spacing:.08em}
+      .header-contact{font-size:10px}
+      .header-action{gap:10px}
+      .language-select{padding-inline:8px 22px}
+    }
+    @media(max-width:680px){
+      :root{--header-height:98px;--page-pad:22px;--body-size:17px}
+      .topline{min-height:34px;padding:0 12px;font-size:11px;letter-spacing:.015em;line-height:1.2;gap:8px;flex-wrap:nowrap;justify-content:center;background:rgba(9,20,14,.38);white-space:nowrap}.topline-desktop{display:none}.topline-mobile{display:inline}
+      .nav-row{height:64px;display:flex;justify-content:space-between;gap:18px;padding:0 24px}
+      .brand img{width:124px;max-height:52px}
+      .main-nav,.header-action{display:none}
+      .mobile-toggle{display:block;justify-self:end;min-width:48px;min-height:48px;padding:10px 13px;font-size:11px}
+      .mobile-menu{inset:var(--header-height) 0 0}
+      .mobile-menu a,.mobile-menu select{min-height:48px}.mobile-language .language-select{min-height:44px}
+      .hero{grid-template-columns:1fr;gap:38px;min-height:0;padding:30px var(--page-pad) 32px}
+      .hero-copy{padding:0}
+      .hero .eyebrow{font-size:11px;letter-spacing:.13em}
+      .hero h1{font-size:clamp(58px,14.8vw,82px);max-width:7.4ch;line-height:1.02;margin:9px 0 12px;letter-spacing:-.05em}
+      .hero-lead{max-width:330px;font-size:19px;line-height:1.3}
+      .hero-actions{gap:11px;margin-top:14px}
+      .hero-actions .button{min-height:48px;padding-inline:18px;font-size:11px}
+      .hero-actions .text-link{min-height:44px;font-size:11px}
+      .hero-location{display:none}
+      .hero-visual{width:min(100%,520px);justify-self:center;margin:0;padding:8px}
+      .hero-photo-window{aspect-ratio:1365/2048}
+      .hero-stamp{left:-8px;bottom:14px;padding:9px 13px;font-size:18px}
+    }
+    @media(max-width:380px){
+      .hero h1{font-size:clamp(52px,13.5vw,60px)}
+      .hero-actions{align-items:flex-start;flex-direction:column;gap:8px}
+    }
+      /* Transparent gold logo, sized to leave breathing room in the navigation. */
+    .brand img{display:block;width:132px;height:64px;max-height:64px;object-fit:contain}
+    .footer-brand img{display:block;width:180px;height:auto;max-width:100%;object-fit:contain}
+    @media(max-width:760px){.brand img{width:112px;height:54px;max-height:54px}}
+  </style>
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="navigation.css">
+  <meta property="og:url" content="https://lecafeparisien.fi/">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="topline"><span class="topline-desktop" data-i18n="topline">A little Parisian moment in Helsinki · Katajanokka</span><span class="topline-mobile" data-i18n="headerHours">Every day · 06:00–20:00</span></div>
+    <div class="nav-row">
+      <a class="brand" href="#home" aria-label="Le Paris Helsinki home" data-i18n-aria-label="homeLabel"><img src="images/le-cafe-parisien-glow.webp" alt="Le café Parisien"></a>
+      <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="mainNavigation">
+        <a href="#experience" data-i18n="navCafe">Our café</a>
+        <a href="menu.html" data-i18n="navMenu">Delicacies</a>
+        <a href="#visit" data-i18n="navFind">Find us</a>
+      </nav>
+      <div class="header-action"><div class="header-contact"><span data-i18n="headerHours">Every day · 06:00–20:00</span></div>
+        <label class="language-control"><span class="sr-only" data-i18n="chooseLanguage">Choose language</span><select class="language-select" data-language-select aria-label="Choose language" data-i18n-aria-label="chooseLanguage"><option value="fi">FI</option><option value="en">EN</option><option value="sv">SE</option><option value="fr">FR</option><option value="de">DE</option></select></label>
+        
+      </div>
+      <button class="mobile-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation menu" data-i18n-aria-label="openMenu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" data-i18n-aria-label="mobileNavigation" aria-hidden="true">
+    <a href="#experience" data-i18n="navCafe">Our café</a>
+    <a href="menu.html" data-i18n="navMenu">Delicacies</a>
+    <a href="#visit" data-i18n="navFind">Find us</a>
+    <a href="#moments" data-i18n="mobileMoments">Little moments</a>
+    
+    <label class="mobile-language"><span data-i18n="chooseLanguage">Choose language</span><select class="language-select" data-language-select aria-label="Choose language" data-i18n-aria-label="chooseLanguage"><option value="fi">FI</option><option value="en">EN</option><option value="sv">SE</option><option value="fr">FR</option><option value="de">DE</option></select></label>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="heroEyebrow">A small Parisian escape in Helsinki</p>
+        <h1><span>Un petit</span><span><em>goût de</em></span><span>Paris.</span></h1>
+        <p class="hero-lead" data-i18n="heroLead">A little taste of Paris, in the heart of Helsinki.</p>
+        <div class="hero-actions"><a class="button" href="menu.html" data-i18n="heroDiscover">Explore the pâtisserie</a><a class="text-link" href="#visit" data-i18n="findCafe">Find our café</a></div>
+      </div>
+      <figure class="hero-visual">
+        <div class="hero-photo-window">
+          <img class="hero-photo" src="images/pastry-table-detail.webp" width="1365" height="2048" alt="Fresh pastries and coffee at Le Paris" data-i18n-alt="welcomeImageAlt" fetchpriority="high" decoding="async">
+        </div>
+        <figcaption class="hero-stamp" data-i18n="stamp">Fait avec amour</figcaption>
+      </figure>
+    </section>
+
+    <div class="marquee" aria-label="Made with love, a taste of beautiful days, a moment of sweetness" data-i18n-aria-label="marqueeAria">
+      <div class="marquee-track" aria-hidden="true">
+      <div class="marquee-line"><span data-i18n="marquee1">Fait avec amour</span><span data-i18n="marquee2">Le goût des beaux jours</span><span data-i18n="marquee3">Un moment de douceur</span><span data-i18n="marquee1">Fait avec amour</span><span data-i18n="marquee2">Le goût des beaux jours</span><span data-i18n="marquee3">Un moment de douceur</span></div>
+        <div class="marquee-line"><span data-i18n="marquee1">Fait avec amour</span><span data-i18n="marquee2">Le goût des beaux jours</span><span data-i18n="marquee3">Un moment de douceur</span><span data-i18n="marquee1">Fait avec amour</span><span data-i18n="marquee2">Le goût des beaux jours</span><span data-i18n="marquee3">Un moment de douceur</span></div>
+      </div>
+    </div>
+
+    <section class="scroll-story" id="experience" aria-labelledby="storyTitle">
+      <div class="story-layout">
+        <div class="story-copy">
+          <p class="eyebrow" data-i18n="storyEyebrow">Meidän tarinamme</p>
+          <h2 id="storyTitle"><span data-i18n="storyTitle1">Aamusta</span><br><em data-i18n="storyTitle2">iltakahdeksaan.</em></h2>
+          <p class="story-lead" data-story-reveal data-i18n="storyLead">Aitoa ranskalaista elämänmenoa pääset kokemaan Le Paris -kahvilassa, aivan Tove Janssonin puistoa vastapäätä.</p>
+          <p class="story-body" data-story-reveal data-i18n="storyBody1">Heinäkuussa ovensa avannut sympaattinen kahvila palvelee myös todellisia aamuvirkkuja, sillä se avaa ovensa jo aamukuudelta. Jos olet aina unelmoinut hakevasi tuoretta leipää aamupalalle tai nappaavasi vastapaistetun croissantin kahveineen mukaan jo aamun ensimmäisiin palavereihin, kannattaa Le Paris painaa mieliin.</p>
+          <p class="story-body" data-story-reveal data-i18n="storyBody2">Ranskalaisten herkkujen perässä ei kuitenkaan tarvitse kiirehtiä, sillä pieni kahvila pitää ovensa auki aina iltakahdeksaan.</p>
+          <span class="story-signature">À bientôt</span>
+        </div>
+        <figure class="story-visual">
+          <div class="story-photo-window"><img class="story-photo" src="images/living-room-table.webp" width="1280" height="853" alt="Coffee and freshly baked French pastries on a table at Le Paris" data-i18n-alt="storyImageAlt" loading="lazy" decoding="async"></div>
+          <figcaption class="story-caption"><span data-i18n="storyCaption1">Fait avec amour</span><span data-i18n="storyCaption2">Helsinki</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="welcome" id="cafe">
+      <div class="welcome-copy reveal">
+        <p class="eyebrow" data-i18n="welcomeEyebrow">Bienvenue chez nous</p>
+        <h2 class="section-heading"><span data-i18n="welcomeTitle1">A little ritual,</span><br><em data-i18n="welcomeTitle2">made slowly.</em></h2>
+        <p class="section-copy" data-i18n="welcomeP1">Step in from the Helsinki streets and settle into a softer pace. There is good coffee to linger over, something lovely from the pâtisserie, and always time for one more conversation.</p>
+        <p class="section-copy" style="margin-top:18px" data-i18n="welcomeP2">Tove Jansson Park is just across the street. Come by for a quiet coffee, a sweet pause, or a pastry to take along.</p>
+        <a class="text-link" href="#visit" style="margin-top:28px;color:#324935;border-color:#74806e" data-i18n="welcomeLink">Come in for coffee</a>
+      </div>
+      <figure class="welcome-image reveal">
+        <img data-reveal-img src="images/hero-cappuccino-almond-pastry.webp" width="1365" height="2048" alt="Cappuccino and an almond pastry in warm morning light" data-i18n-alt="heroImageAlt" loading="lazy" decoding="async">
+        <figcaption class="photo-note"><span data-i18n="photoNote1">Le Paris · Helsinki</span><span data-i18n="photoNote2">Fait avec amour</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="ritual" aria-label="The Le Paris coffee ritual" data-i18n-aria-label="ritualAria">
+      <figure class="ritual-photo"><img data-reveal-img data-parallax="0.04" src="images/hero-cafe-table.webp" width="1121" height="1403" alt="Two coffees and French pastries on a café table beside the window" data-i18n-alt="ritualImageAlt" loading="lazy" decoding="async"></figure>
+      <div class="ritual-copy reveal">
+        <p class="eyebrow" data-i18n="ritualEyebrow">Un moment pour soi</p>
+        <h2><span data-i18n="ritualTitle1">Pour slowly.</span><br><em data-i18n="ritualTitle2">Stay a while.</em></h2>
+        <p data-i18n="ritualP">From the first crema to the last flaky crumb, the pleasure is in taking your time. Find your favourite corner and let Helsinki wait for a moment.</p>
+        <span class="ritual-signature">À bientôt</span>
+      </div>
+    </section>
+
+    <section class="pastries" id="pastries">
+      <div class="pastry-heading reveal">
+        <div><p class="eyebrow" style="color:#8b7845" data-i18n="pastryEyebrow">Fresh from the counter</p><h2 class="section-heading"><span data-i18n="pastryTitle1">The pâtisserie</span><br><em data-i18n="pastryTitle2">at Le Paris.</em></h2></div>
+        <p class="pastry-intro" data-i18n="pastryIntro">Golden layers, delicate sweets and the little things that make a coffee break feel like Paris. Browse the counter and find your own favourite.</p>
+      </div>
+      <div class="pastry-gallery-viewport" id="pastryViewport" role="region" aria-label="Le Paris pastry and coffee photographs. Scroll horizontally on desktop or swipe on mobile." data-i18n-aria-label="galleryAria" tabindex="0">
+        <div class="pastry-gallery" id="pastryTrack">
+          <article class="pastry-card"><figure><img data-reveal-img src="images/sweet-and-savoury-pastries.webp" width="853" height="1280" alt="A spread of sweet berry tarts and savoury café pastries" data-i18n-alt="pastryAlt1" loading="lazy" decoding="async"></figure><figcaption><span class="pastry-name" data-i18n="pastryCard1">Sweet &amp; savoury</span><span class="pastry-type" data-i18n="pastryType1">Pâtisserie</span></figcaption></article>
+          <article class="pastry-card"><figure><img data-reveal-img src="images/sweet-pause-tart-coffee.webp" width="1581" height="2048" alt="A raspberry tart and cappuccino served together" data-i18n-alt="pastryAlt2" loading="lazy" decoding="async"></figure><figcaption><span class="pastry-name" data-i18n="pastryCard2">A sweet pause</span><span class="pastry-type" data-i18n="pastryType2">Tart &amp; coffee</span></figcaption></article>
+          <article class="pastry-card"><figure><img data-reveal-img src="images/golden-layers-croissant.webp" width="1486" height="2048" alt="A golden layered croissant with an almond macaron" data-i18n-alt="pastryAlt3" loading="lazy" decoding="async"></figure><figcaption><span class="pastry-name" data-i18n="pastryCard3">Golden layers</span><span class="pastry-type" data-i18n="pastryType3">Croissant</span></figcaption></article>
+          <article class="pastry-card"><figure><img data-reveal-img src="images/coffee-together-almond-pastry.jpg" width="1638" height="2048" alt="Two cappuccinos with almond pastries at Le Paris" data-i18n-alt="pastryAlt4" loading="lazy" decoding="async"></figure><figcaption><span class="pastry-name" data-i18n="pastryCard4">Coffee, together</span><span class="pastry-type" data-i18n="pastryType4">Café ritual</span></figcaption></article>
+        </div>
+      </div>
+      <p class="gallery-hint" data-i18n="galleryHint">Scroll to travel across the counter. Swipe on mobile.</p>
+      <p class="gallery-menu-link"><a class="text-link" href="menu.html" data-i18n="menuLink">See the delicacies menu</a></p>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="visit-copy reveal">
+        <p class="eyebrow" data-i18n="visitEyebrow">A little Paris in Helsinki</p>
+        <h2><span data-i18n="visitTitle1">Parisian charm.</span><br><em data-i18n="visitTitle2">Helsinki heart.</em></h2>
+        <p data-i18n="visitP">Come in for a coffee and something lovely from the counter.</p>
+        <address class="visit-address">Satamakatu 5<small data-i18n="addressCity">00160 Helsinki, Finland</small></address>
+        <div class="visit-links"><a class="button" href="https://www.google.com/maps/dir/?api=1&amp;destination=Satamakatu%205%2C%2000160%20Helsinki%2C%20Finland" target="_blank" rel="noopener noreferrer" data-i18n="directions">Get directions</a><a class="text-link" href="https://www.openstreetmap.org/search?query=Satamakatu%205%2C%2000160%20Helsinki%2C%20Finland" target="_blank" rel="noopener noreferrer" data-i18n="osm">OpenStreetMap</a></div>
+      </div>
+      <div class="map-panel reveal">
+        <iframe title="Interactive map to Le Paris at Satamakatu 5 in Helsinki" data-i18n-title="mapTitle" src="https://maps.google.com/maps?q=Satamakatu%205%2C%2000160%20Helsinki%2C%20Finland&amp;output=embed&amp;z=16" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </section>
+
+
+    <section class="moments" id="moments">
+      <div class="moments-head reveal">
+        <div><p class="eyebrow" data-i18n="momentsEyebrow">Petits plaisirs</p><h2><span data-i18n="momentsTitle1">Little moments</span><br><em data-i18n="momentsTitle2">from Le Paris.</em></h2></div>
+        <a class="button button-quiet" href="https://www.instagram.com/lecafe.parisien/" target="_blank" rel="noopener noreferrer" data-i18n="follow">Follow us on Instagram</a>
+      </div>
+      <div class="moments-grid">
+        <a class="moment-card" href="https://www.instagram.com/lecafe.parisien/" target="_blank" rel="noopener noreferrer" aria-label="See Le Paris coffee and pastry photographs on Instagram" data-i18n-aria-label="momentAlt1"><img data-reveal-img src="images/coffee-berry-tart.webp" alt="A berry tart with cappuccino at Le Paris" data-i18n-alt="momentAlt1" loading="lazy" decoding="async"><span data-i18n="momentLabel1">Something sweet</span></a>
+        <a class="moment-card" href="https://www.instagram.com/lecafe.parisien/" target="_blank" rel="noopener noreferrer" aria-label="See Le Paris café moments on Instagram" data-i18n-aria-label="momentAlt2"><img data-reveal-img src="images/fait-maison.webp" alt="Croissants surrounding a note about pastries made with love" data-i18n-alt="momentAlt2" loading="lazy" decoding="async"><span data-i18n="momentLabel2">Fait avec amour</span></a>
+        <a class="moment-card" href="https://www.instagram.com/lecafe.parisien/" target="_blank" rel="noopener noreferrer" aria-label="See Le Paris coffee moments on Instagram" data-i18n-aria-label="momentAlt3"><img data-reveal-img src="images/espresso.webp" alt="A stream of espresso pouring into a ceramic cup" data-i18n-alt="momentAlt3" loading="lazy" decoding="async"><span data-i18n="momentLabel3">Morning ritual</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="#home" aria-label="Back to top" data-i18n-aria-label="backToTop"><img src="images/le-cafe-parisien-glow.webp" alt="Le café Parisien"></a></div>
+      <div class="footer-col"><span class="footer-title" data-i18n="footerFind">Find us</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Satamakatu%205%2C%2000160%20Helsinki%2C%20Finland" target="_blank" rel="noopener noreferrer" data-i18n="footerDirections">Directions in Google Maps</a><a href="tel:+358405501111">+358 40 550 1111</a></div>
+      <div class="footer-col"><span class="footer-title" data-i18n="footerHours">Open hours</span><dl class="opening-hours"><dt data-i18n="footerEveryDay">Every day</dt><dd>06:00–20:00</dd></dl></div>
+      <div class="footer-col"><span class="footer-title" data-i18n="footerSay">Say bonjour</span><a href="mailto:bonjour@lecafeparisien.fi">bonjour@lecafeparisien.fi</a><a href="https://www.instagram.com/lecafe.parisien/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    </div>
+    <div class="footer-bottom"><span data-i18n="footerCopyright">© 2026 Le Paris Helsinki</span><span data-i18n="footerMade">Made with care</span></div>
+  </footer>
+
+  <div class="page-progress" aria-hidden="true"><span></span></div>
+
+  <script src="translations.js"></script>
+  <script src="navigation.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    const header=document.querySelector('.site-header');
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
+    let frameRequested=false;
+    let galleryDistance=0;
+    let galleryStart=0;
+    const gallerySection=document.querySelector('.pastries');
+    const galleryViewport=document.getElementById('pastryViewport');
+    const galleryTrack=document.getElementById('pastryTrack');
+    const pageProgress=document.querySelector('.page-progress span');
+    const hero=document.querySelector('.hero');
+    const heroImage=document.querySelector('.hero-visual');
+
+    if(!reducedMotion&&'IntersectionObserver'in window){
+      const entranceObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+        if(!entry.isIntersecting)return;
+        const element=entry.target;
+        if(element.matches('img[data-reveal-img]')){
+          element.animate([{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0 0)'}],{duration:1050,easing:'cubic-bezier(.2,.75,.25,1)',fill:'both'});
+        }else{
+          element.animate([{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'translateY(0)'}],{duration:780,easing:'cubic-bezier(.2,.75,.25,1)',fill:'both'});
+        }
+        entranceObserver.unobserve(element);
+      }),{threshold:.14,rootMargin:'0px 0px -7% 0px'});
+      document.querySelectorAll('.reveal,[data-story-reveal],img[data-reveal-img]').forEach(element=>entranceObserver.observe(element));
+    }
+
+    const pageTop=element=>{
+      let top=0;
+      let node=element;
+      while(node&&node!==document.body){top+=node.offsetTop;node=node.offsetParent;}
+      return top;
+    };
+    const refreshGallery=()=>{
+      if(!gallerySection||!galleryViewport||!galleryTrack)return;
+      const desktop=window.innerWidth>=768&&!reducedMotion;
+      if(!desktop){
+        gallerySection.classList.remove('has-scroll-gallery');
+        gallerySection.style.removeProperty('--gallery-scroll-distance');
+        galleryTrack.style.transform='';
+        galleryDistance=0;
+        return;
+      }
+      galleryDistance=Math.max(0,galleryTrack.scrollWidth-galleryViewport.clientWidth);
+      if(galleryDistance<2){
+        gallerySection.classList.remove('has-scroll-gallery');
+        gallerySection.style.removeProperty('--gallery-scroll-distance');
+        return;
+      }
+      gallerySection.style.setProperty('--gallery-scroll-distance',galleryDistance+'px');
+      gallerySection.classList.add('has-scroll-gallery');
+      galleryStart=pageTop(galleryViewport)-header.offsetHeight-24;
+    };
+
+    const updateScrollEffects=()=>{
+      frameRequested=false;
+      const scrollY=window.scrollY||window.pageYOffset;
+      if(header)header.classList.toggle('scrolled',scrollY>45);
+      const pageLength=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+      if(pageProgress)pageProgress.style.transform='scaleX('+clamp(scrollY/pageLength,0,1)+')';
+      const marqueeTrack=document.querySelector('.marquee-track');
+      if(marqueeTrack){
+        const loopWidth=marqueeTrack.scrollWidth/2;
+        // Make the strip respond clearly while it crosses the viewport. The previous
+        // 0.16 ratio moved only a few pixels as the 59px band passed by.
+        const offset=!reducedMotion&&loopWidth>0?(scrollY*1.2)%loopWidth:0;
+        marqueeTrack.style.transform='translate3d('+(-offset)+'px,0,0)';
+      }
+      if(!reducedMotion&&heroImage&&hero){
+        const progress=clamp(scrollY/Math.max(1,hero.offsetHeight*.9),0,1);
+        heroImage.style.transform='translate3d(0,'+(-progress*18)+'px,0)';
+      }
+      if(!reducedMotion){
+        document.querySelectorAll('[data-parallax]').forEach(element=>{
+          const bounds=element.getBoundingClientRect();
+          const speed=parseFloat(element.dataset.parallax)||.04;
+          const progress=clamp((window.innerHeight-bounds.top)/(window.innerHeight+bounds.height),0,1);
+          element.style.transform='translate3d(0,'+((.5-progress)*window.innerHeight*speed*2)+'px,0)';
+        });
+      }
+      if(galleryDistance&&galleryTrack){
+        const progress=clamp((scrollY-galleryStart)/galleryDistance,0,1);
+        galleryTrack.style.transform='translate3d('+(-galleryDistance*progress)+'px,0,0)';
+      }
+    };
+    const requestScrollUpdate=()=>{
+      if(!frameRequested){frameRequested=true;window.requestAnimationFrame(updateScrollEffects);}
+    };
+    document.addEventListener('le-paris-language-change',()=>{refreshGallery();requestScrollUpdate();});
+    refreshGallery();
+    requestScrollUpdate();
+    window.addEventListener('scroll',requestScrollUpdate,{passive:true});
+    window.addEventListener('resize',()=>{refreshGallery();requestScrollUpdate();},{passive:true});
+    if(galleryTrack){
+      galleryTrack.querySelectorAll('img').forEach(image=>image.addEventListener('load',()=>{refreshGallery();requestScrollUpdate();},{once:true}));
+    }
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{refreshGallery();requestScrollUpdate();});
+
+  });
+  </script>
+</body>
+</html>

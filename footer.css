@@ -1,0 +1,15 @@
+/* Shared by every page so spacing and responsive behavior stay consistent. */
+.site-footer{padding:54px 0 30px;background:#0e1d15;color:#f4eddf}
+.site-footer .footer-top,.site-footer .footer-bottom{box-sizing:border-box;width:100%;max-width:1440px;margin-inline:auto;padding-inline:clamp(22px,5.5vw,88px)}
+.site-footer .footer-top{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:start;gap:30px;padding-bottom:42px;border-bottom:1px solid rgba(211,194,141,.27)}
+.site-footer .footer-brand{grid-column:auto;min-width:0}
+.site-footer .footer-brand img{display:block;width:180px;max-width:100%;height:auto;margin:0}
+.site-footer .footer-col{min-width:0}
+.site-footer .footer-title{display:block;margin-bottom:13px;color:#d5c28d;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.site-footer .footer-col a{display:block;width:fit-content;max-width:100%;margin:8px 0;color:#d0ccbf;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+.site-footer .footer-col a:hover{color:#d5c28d}
+.site-footer .opening-hours{display:flex;flex-wrap:wrap;gap:5px 18px;margin:0;color:#d0ccbf;font-size:15px;line-height:1.75}
+.site-footer .opening-hours dt,.site-footer .opening-hours dd{margin:0;white-space:nowrap}
+.site-footer .footer-bottom{display:flex;flex-direction:row;justify-content:space-between;gap:20px;padding-top:22px;color:#aaa99a;font-size:12px;letter-spacing:.06em}
+@media(max-width:1100px){.site-footer .footer-top{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.site-footer .footer-top{grid-template-columns:1fr;gap:28px}.site-footer .footer-bottom{flex-direction:column;gap:7px}.site-footer .footer-col a{display:flex;align-items:center;min-height:44px;margin:0}}
